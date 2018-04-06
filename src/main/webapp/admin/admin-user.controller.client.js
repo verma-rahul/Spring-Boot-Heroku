@@ -50,6 +50,8 @@
         // TBD
     }
     function renderUsers(users) {
+        console.log("users in render")
+        console.log(users)
         $tbody.empty();
         for(var u in users) {
             var user = users[u];
@@ -57,10 +59,7 @@
             $row.find('.wbdv-username').html(user.username);
             $row.find('.wbdv-first-name').html(user.firstName);
             $row.find('.wbdv-last-name').html(user.lastName);
-            if ('tenure' in user)
-            $row.find('.wbdv-role').html("FACULTY");
-            else
-                $row.find('.wbdv-role').html("STUDENT");
+            $row.find('.wbdv-dtype').html(('gpa' in user)?"Student":"Faculty");
             $tbody.append($row);
         }
     }

@@ -1,6 +1,8 @@
 package com.project.coursemanager.services;
 
 
+import com.project.coursemanager.models.Faculty;
+import com.project.coursemanager.models.Student;
 import com.project.coursemanager.models.User;
 import com.project.coursemanager.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +37,15 @@ public class UserService {
 	public User createUser(@RequestBody User user) {
 		return userRepository.save(user);
 	}
-	
+
+	@PostMapping("/api/faculty")
+	public User createFaculty(@RequestBody Faculty faculty) {
+		return userRepository.save(faculty);
+	}
+	@PostMapping("/api/student")
+	public User createStudent(@RequestBody Student student) {
+		return userRepository.save(student);
+	}
 	@DeleteMapping("/api/user/{userId}")
 	public void deleteUser(@PathVariable("userId") int id) {
 		userRepository.delete(id);

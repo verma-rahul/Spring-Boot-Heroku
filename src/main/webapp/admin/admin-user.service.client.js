@@ -2,10 +2,11 @@ function AdminUserServiceClient() {
     this.createUser = createUser;
     this.findAllUsers = findAllUsers;
     this.url = location.protocol + '//' + location.host+"/api/user";
+    this.url_student = location.protocol + '//' + location.host+"/api/student";
+    this.url_faculty = location.protocol + '//' + location.host+"/api/faculty";
     var self = this;
 
     function findAllUsers(callback) {
-        console.log("url is", self.url)
         $.ajax({
             url: self.url,
             success: callback,
@@ -16,14 +17,14 @@ function AdminUserServiceClient() {
   }
 
     function createUser(user, callback) {
-      console.log("in Create User",user)
+        var url= user.dtype=="Student" ? self.url_student:self.url_faculty;
             $.ajax({
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
               type: "POST",
-              url: self.url,
+              url: url,
               data: JSON.stringify(user),
               dataType: 'json',
               success: function (data){

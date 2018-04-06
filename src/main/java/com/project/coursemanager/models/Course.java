@@ -2,6 +2,7 @@ package com.project.coursemanager.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Course {
@@ -9,9 +10,12 @@ public class Course {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String name;
+
 	@ManyToOne()
 	@JsonIgnore
 	private Faculty author;
+
+
 	public Course(String name) {
 		super();
 		this.name = name;
@@ -45,4 +49,5 @@ public class Course {
 			author.getAuthoredCourses().add(this);
 		}
 	}
+
 }
