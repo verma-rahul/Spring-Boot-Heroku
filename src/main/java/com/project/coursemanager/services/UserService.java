@@ -37,15 +37,6 @@ public class UserService {
 	public User createUser(@RequestBody User user) {
 		return userRepository.save(user);
 	}
-
-	@PostMapping("/api/faculty")
-	public User createFaculty(@RequestBody Faculty faculty) {
-		return userRepository.save(faculty);
-	}
-	@PostMapping("/api/student")
-	public User createStudent(@RequestBody Student student) {
-		return userRepository.save(student);
-	}
 	@DeleteMapping("/api/user/{userId}")
 	public void deleteUser(@PathVariable("userId") int id) {
 		userRepository.delete(id);
