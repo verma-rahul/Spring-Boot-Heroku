@@ -59,7 +59,7 @@
             $row.find('.wbdv-username').html(user.username);
             $row.find('.wbdv-first-name').html(user.firstName);
             $row.find('.wbdv-last-name').html(user.lastName);
-            $row.find('.wbdv-dtype').html(('gpa' in user)?"Student":"Faculty");
+            $row.find('.wbdv-type').html(user.type);
             $tbody.append($row);
         }
     }

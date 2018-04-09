@@ -9,13 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api/faculty")
+
+
 public class FacultyService {
 
     @Autowired
     UserRepository userRepository;
 
 
-    @PostMapping("/api/faculty")
+    @PostMapping("/")
     public User createFaculty(@RequestBody Faculty faculty) {
         return userRepository.save(faculty);
     }

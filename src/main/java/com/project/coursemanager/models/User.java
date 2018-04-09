@@ -1,19 +1,42 @@
 package com.project.coursemanager.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
+import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
+
+/*
+ * @Entity : Used to Mark as Table for JPA
+ *
+ * @JsonTypeInfo : Tells the superClass User to AutoCast to Student or Faculty depending upon type property
+ * [https://stackoverflow.com/questions/27170298/spring-reponsebody-requestbody-with-abstract-class  ]
+ *
+ * @Inheritance(strategy = "") : Tells the Inheritance Strategy to use, see below link
+ * https://www.thoughts-on-java.org/complete-guide-inheritance-strategies-jpa-hibernate/
+ * */
+
+
+    @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = As.PROPERTY, property = "type")
+    @JsonSubTypes({
+        @JsonSubTypes.Type(value = Faculty.class, name = "FACULTY"),
+        @JsonSubTypes.Type(value = Student.class, name = "STUDENT") })
     @Entity
-    public class User {
+    @Inheritance(strategy = InheritanceType.JOINED)
+    public abstract class User {
         @Id
         @GeneratedValue(strategy=GenerationType.IDENTITY)
-        private int id;
+         int id;
+        @Column(nullable = false)
         private String username;
+        @Column(nullable = false)
         private String password;
         private String firstName;
         private String lastName;
+
+
         public int getId() {
             return id;
         }

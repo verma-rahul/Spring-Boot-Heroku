@@ -1,7 +1,7 @@
 function AdminUserServiceClient() {
     this.createUser = createUser;
     this.findAllUsers = findAllUsers;
-    this.url = location.protocol + '//' + location.host+"/api/user";
+    this.url = location.protocol + '//' + location.host+"/api/user/";
     this.url_student = location.protocol + '//' + location.host+"/api/student";
     this.url_faculty = location.protocol + '//' + location.host+"/api/faculty";
     var self = this;
@@ -17,14 +17,14 @@ function AdminUserServiceClient() {
   }
 
     function createUser(user, callback) {
-        var url= user.dtype=="Student" ? self.url_student:self.url_faculty;
+        console.log(user)
             $.ajax({
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
               type: "POST",
-              url: url,
+              url: self.url,
               data: JSON.stringify(user),
               dataType: 'json',
               success: function (data){

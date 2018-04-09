@@ -4,11 +4,18 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.util.List;
 
+/*
+* @Entity : Used to Mark as Table for JPA
+* */
 @Entity
 public class Course {
+
+	/* Mark as Id and auto Generated Field*/
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+//	To Mark Column as Not Null
+	@Column(nullable = false)
 	private String name;
 
 	@ManyToOne()

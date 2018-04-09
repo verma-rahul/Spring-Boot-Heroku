@@ -1,10 +1,14 @@
 package com.project.coursemanager.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonRootName;
 
 import javax.persistence.*;
 import java.util.List;
 
+/*
+ * @Entity : Used to Mark as Table for JPA
+ * */
 @Entity
 public class Student extends User {
 
@@ -44,6 +48,11 @@ public class Student extends User {
         super();
         this.gpa = gpa;
         this.graduationYear = graduationYear;
+    }
+    public void set(Student newUser) {
+        super.set(newUser);
+        this.gpa = newUser.gpa != 0? newUser.gpa : this.gpa;
+        this.graduationYear = newUser.graduationYear != 0 ? newUser.graduationYear : this.graduationYear;
     }
     public Float getGpa() {
         return gpa;
