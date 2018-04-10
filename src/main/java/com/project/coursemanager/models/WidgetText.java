@@ -51,4 +51,12 @@ public class WidgetText extends Widget  {
     private String fontStyle="normal";
     private String fontType="monospace";
     private String fontSize="16px";
+
+    public void set(WidgetText newWidget){
+        super.set(newWidget);
+        this.content = newWidget.getContent() != null ? newWidget.getContent() : this.content;
+        this.fontStyle = newWidget.getFontStyle() != null ? newWidget.getFontStyle() : this.fontStyle;
+        this.fontType = newWidget.getFontType() != null ? newWidget.getFontType() : this.fontType;
+        this.fontSize = newWidget.getFontSize() != null ? newWidget.getFontSize() : this.fontSize;
+    }
 }

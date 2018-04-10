@@ -61,5 +61,9 @@ public abstract class Widget {
                 section.getWidgets().add(this);
             }
         }
+        public void set(Widget newWidget){
+            this.name = newWidget.getName() != null ? newWidget.getName() : this.name;
+
+        }
 
 }

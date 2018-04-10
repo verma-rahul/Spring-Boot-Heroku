@@ -40,4 +40,11 @@ public class WidgetImage extends Widget  {
         this.height = height;
     }
 
+
+    public void set(WidgetImage newWidget){
+        super.set(newWidget);
+        this.URL = newWidget.getURL() != null ? newWidget.getURL() : this.URL;
+        this.width = newWidget.getWidth() != null ? newWidget.getWidth() : this.width;
+        this.height = newWidget.getHeight() != null ? newWidget.getHeight() : this.height;
+    }
 }

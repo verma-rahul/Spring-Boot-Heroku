@@ -46,6 +46,13 @@ public class WidgetVideo extends Widget {
     public void setControls(Boolean controls) {
         this.controls = controls;
     }
+    public void set(WidgetVideo newWidget){
+        super.set(newWidget);
+        this.URL = newWidget.getURL() != null ? newWidget.getURL() : this.URL;
+        this.width = newWidget.getWidth() != null ? newWidget.getWidth() : this.width;
+        this.height = newWidget.getHeight() != null ? newWidget.getHeight() : this.height;
+        this.controls = newWidget.getControls() != null ? newWidget.getControls() : this.controls;
+    }
 
 
 }
