@@ -2,6 +2,8 @@ package com.project.coursemanager.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.project.coursemanager.Views.View;
 
 import javax.persistence.*;
 import java.util.List;
@@ -15,10 +17,17 @@ import java.util.List;
 public class Module {
 
 
+    /*   @JsonView : annotation added to fetch
+    field by functions marked by same Interface
+    Link:  [https://spring.io/blog/2014/12/02/latest-jackson-integration-improvements-in-spring]
+*/
+    @JsonView(View.Summary.class)
     /* Mark as Id and auto Generated Field*/
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
+
+    @JsonView(View.Summary.class)
     //	To Mark Column as Not Null
     @Column(nullable = false)
     private String name;

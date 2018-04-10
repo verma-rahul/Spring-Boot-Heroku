@@ -27,11 +27,10 @@ public class CoursePageService {
     @Autowired
     WidgetRepository widgetRepository;
 
-    @GetMapping("/{courseId}")
+   /* @GetMapping("/{courseId}")
     public CoursePageWrapper getCourseById(@PathVariable("courseId") int id) {
         CoursePageWrapper coursePage=new CoursePageWrapper();
-        coursePage.set(courseRepository.findOne(id));
-        return coursePage;
-    }
+        return courseRepository.findOne(id);
+    }*/
 
 }

@@ -2,8 +2,10 @@ package com.project.coursemanager.services;
 
 
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.project.coursemanager.models.Course;
 import com.project.coursemanager.models.Faculty;
+import com.project.coursemanager.Views.View;
 import com.project.coursemanager.repositories.CourseRepository;
 import com.project.coursemanager.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +40,20 @@ public class CourseService {
         return ((Faculty) userRepository.findOne(userId)).getAuthoredCourses();
 
     }
+
+/*   @JsonView : annotation added to fetch only
+    fields that are marked by same Interface in returned Entity Class
+    Link:  [https://spring.io/blog/2014/12/02/latest-jackson-integration-improvements-in-spring]
+*/
+    @JsonView(View.Summary.class)
     @GetMapping("/{courseId}")
     public Course getCourseById(@PathVariable("courseId") int id) {
+        return courseRepository.findOne(id);
+
+    }
+
+    @GetMapping("/{courseId}/coursePage")
+    public Course getCoursePageById(@PathVariable("courseId") int id) {
         return courseRepository.findOne(id);
 
     }
