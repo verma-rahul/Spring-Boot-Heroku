@@ -1,6 +1,8 @@
 package com.project.coursemanager.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -28,12 +30,13 @@ public class Module {
     @OneToMany(mappedBy = "module", orphanRemoval = true, cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Section> sections;
-
-
+    //    To include The Field in Serialization
+    @JsonProperty
     public List<Section> getSections() {
         return sections;
     }
-
+    //    To Exclude The Field in Serialization
+    @JsonIgnore
     public void setSections(List<Section> sections) {
         this.sections = sections;
     }

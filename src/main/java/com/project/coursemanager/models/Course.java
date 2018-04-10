@@ -1,6 +1,8 @@
 package com.project.coursemanager.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -27,11 +29,13 @@ public class Course {
 	@OneToMany(mappedBy = "course", orphanRemoval = true, cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<Module> modules;
-
+	//    To include The Field in Serialization
+	@JsonProperty
 	public List<Module> getModules() {
 		return modules;
 	}
-
+	//    To Exclude The Field in Serialization
+	@JsonIgnore
 	public void setModules(List<Module> modules) {
 		this.modules = modules;
 	}

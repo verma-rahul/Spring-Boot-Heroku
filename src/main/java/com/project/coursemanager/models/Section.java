@@ -1,6 +1,7 @@
 package com.project.coursemanager.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.util.List;
@@ -31,10 +32,13 @@ public class Section {
     @JsonIgnore
     private List<Widget> widgets;
 
+//    To include The Field in Serialization
+    @JsonProperty
     public List<Widget> getWidgets() {
         return widgets;
     }
-
+//    To Exclude The Field in Serialization
+    @JsonIgnore
     public void setWidgets(List<Widget> widgets) {
         this.widgets = widgets;
     }
