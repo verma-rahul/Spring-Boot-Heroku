@@ -1,0 +1,387 @@
+GET:
+--------------------------------------------------------------------------------------------------------------------------------
+User:
+http://localhost:8080/api/user/
+[
+{
+        
+"type": "FACULTY",
+        
+"id": 1,
+        
+"username": "jose25",
+        
+"password": "abcd",
+       
+ "firstName": "jose",
+        
+"lastName": "anunnzi",
+        
+"office": "123 A",
+        
+"tenure": true
+    
+}
+]
+
+
+http://localhost:8080/api/user/?username=jose25&password=abcd
+http://localhost:8080/api/user/?username=jose25
+http://localhost:8080/api/user/1
+
+--------------------------------------------------------------------------------------------------------------------------------
+Course:
+http://localhost:8080/api/course/?user_id=1
+http://localhost:8080/api/course/1
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+Module:
+http://localhost:8080/api/module/?course_id=1
+http://localhost:8080/api/module/1
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+Section:
+http://localhost:8080/api/section/?module_id=1
+http://localhost:8080/api/section/1
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+Widget:
+http://localhost:8080/api/widget/7
+{
+    
+"type": "HTML",
+    
+"id": 7,
+    
+"name": "Sample HTML 2 ",
+   
+"content": "<h1>Hi !!! I am Sample Second HTML Content</h1>"
+}
+
+http://localhost:8080/api/widget/?section_id=1
+[
+{
+        
+"type": "VIDEO",
+        
+"id": 2,
+        
+"name": "Chand-joey-vid",
+        
+"width": "320",
+        
+"height": "240",
+        
+"controls": true,
+        
+"url": "https://www.youtube.com/watch?v=tf9qR1wNZXk"
+    
+},
+    
+{
+        
+"type": "TEXT",
+        
+"id": 5,
+        
+"name": "Sample Text",
+      
+"content": "Hi !!! I am Sample Content",
+     
+"fontStyle": "normal",
+        
+"fontType": "monospace",
+        
+"fontSize": "16px"
+    
+},
+    
+{
+        
+"type": "HTML",
+        
+"id": 6,
+        
+"name": "Sample HTML",
+        
+"content": "<h1>Hi !!! I am Sample HTML Content</h1>"
+    
+},
+    
+{
+        
+"type": "IMAGE",
+        
+"id": 4,
+        
+"name": "Chand-joey-image",
+        
+"width": "320",
+        
+"height": "240",
+        
+"url": "http://cdn.newsapi.com.au/image/v1/eb2c300a22b064cb3843313360341728"
+
+}
+]
+
+
+##################################################################################################################################
+POST:
+--------------------------------------------------------------------------------------------------------------------------------
+User:
+
+http://localhost:8080/api/user/
+{
+	
+"username":"jose25",
+	
+"password":"abcd",
+	
+"firstName":"jose",
+	
+"lastName":"anunnzi",
+	
+"type":"FACULTY",
+	
+"tenure":true,
+	
+"office":"123 A"
+}
+
+
+http://localhost:8080/api/user/
+{
+	"username":"rahul25",
+	"password":"abcd",
+	"firstName":"rahul",
+	"lastName":"verma",
+	"type":"STUDENT",
+	"gpa": 3,
+    	"graduationYear": 2015
+}
+--------------------------------------------------------------------------------------------------------------------------------
+Course:
+http://localhost:8080/api/course/?user_id=1
+{
+"name":"A"
+}
+
+
+
+Module:
+-------------------------------------------------------------------------------------------------------------------------------
+http://localhost:8080/api/module/?course_id=1
+{
+"name":"A1"
+}
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+Section:
+http://localhost:8080/api/section/?module_id=1
+{
+"name":"A1-1"
+}
+
+http://localhost:8080/api/section/?module_id=8
+{
+"name":"B1-1"
+}
+
+--------------------------------------------------------------------------------------------------------------------------------
+Widget:
+
+http://localhost:8080/api/widget/?section_id=1
+{
+	
+"type": "VIDEO",
+	
+"url": "https://www.youtube.com/watch?v=tf9qR1wNZXk",
+	
+"name": "Chand-joey-vid"
+}
+
+
+http://localhost:8080/api/widget/?section_id=1
+{
+	
+"type": "IMAGE",
+	
+"url": "http://cdn.newsapi.com.au/image/v1/eb2c300a22b064cb3843313360341728",
+	
+"name": "Chand-joey-image"
+}
+
+http://localhost:8080/api/widget/?section_id=1
+{
+	
+"type": "TEXT",
+	
+"content": "Hi !!! I am Sample Content",
+	
+"name": "Sample Text"
+}
+
+http://localhost:8080/api/widget/?section_id=1
+{
+	
+"type": "HTML",
+	
+"content": "<h1>Hi !!! I am Sample HTML Content</h1>",
+	
+"name": "Sample HTML"
+}
+
+
+##################################################################################################################################
+PUT:
+--------------------------------------------------------------------------------------------------------------------------------
+User:
+http://localhost:8080/api/user/1
+{
+"id": 1,
+        
+"username": "joseA",
+        
+"password": "abcd",
+        
+"firstName": "jose",
+        
+"lastName": "anunnzi",
+        
+"office": "625 A",
+        
+"tenure": true,
+        
+"type":"FACULTY"
+}
+
+http://localhost:8080/api/user/2
+{
+    "type": "STUDENT",
+    "username": "rahul100",
+    "password": "abcd",
+    "firstName": "rahul",
+    "lastName": "verma",
+    "gpa": 4,
+    "graduationYear": 2018
+}
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+Course:
+http://localhost:8080/api/course/?course_id=1
+{
+"name":"A"
+}
+
+
+---------------------------------------------------------------------------------------------------------------------
+Module:
+http://localhost:8080/api/module/2
+{
+"name":"A2-M"
+}
+
+--------------------------------------------------------------------------------------------------------------------------------
+Section:
+http://localhost:8080/api/section/2
+{
+"name":"A1-2-M"
+}
+
+--------------------------------------------------------------------------------------------------------------------------------
+Widget:
+http://localhost:8080/api/widget/2
+
+{
+"type": "VIDEO",
+        
+"name": "Chand-joey-vid-Modified",
+       
+"width": "320",
+        
+"height": "240",
+        
+"controls": false,
+        
+"url": "https://www.youtube.com/watch?v=tf9qR1wNZXk"
+}
+................................
+http://localhost:8080/api/widget/5
+
+{
+"type": "TEXT",
+        
+"name": "Sample Text Modified",
+       
+"content": "Hi !!! I am Sample Content",
+        
+"fontStyle": "normal",
+        
+"fontType": "monospace",
+        
+"fontSize": "12px"
+}
+................................
+http://localhost:8080/api/widget/6
+
+{
+"type": "HTML",
+        
+"name": "Sample HTML Modified",
+        
+"content": "<h1>Hi !!! I am Sample HTML Content Modified</h1>"
+}
+................................
+http://localhost:8080/api/widget/4
+
+{
+"type": "IMAGE",
+    
+"name": "Chand-joey-image-Modified",
+ 
+"width": "640",
+    
+"height": "480",
+    
+"url": "http://cdn.newsapi.com.au/image/v1/eb2c300a22b064cb3843313360341728"
+}
+
+--------------------------------------------------------------------------------------------------------------------------------
+##################################################################################################################################
+DEL:
+--------------------------------------------------------------------------------------------------------------------------------
+User:
+http://localhost:8080/api/user/1
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+Course:
+http://localhost:8080/api/course/3
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+Module:
+http://localhost:8080/api/module/20
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+Section:
+http://localhost:8080/api/section/16
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+Widget:
+http://localhost:8080/api/widget/7
+
+--------------------------------------------------------------------------------------------------------------------------------

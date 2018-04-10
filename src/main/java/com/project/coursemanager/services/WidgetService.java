@@ -27,7 +27,7 @@ public class WidgetService {
     }
 
     @GetMapping("/")
-    public Widget[] getAllWidgets(@RequestParam(name="widget_id", required=true) Integer sectionId) {
+    public Widget[] getAllWidgets(@RequestParam(name="section_id", required=true) Integer sectionId) {
 
         //		We Convert Iterable to Array, so that Jackson can find Type and use
         //		the Custom Configuration and add type field
