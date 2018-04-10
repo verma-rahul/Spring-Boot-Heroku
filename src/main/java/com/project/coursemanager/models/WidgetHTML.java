@@ -1,0 +1,22 @@
+package com.project.coursemanager.models;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+
+/*
+ * @Entity : Used to Mark as Table for JPA
+ * */
+@Entity
+class WidgetHTML extends Widget {
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+    //	To Mark Column as Not Null
+    @Column(nullable = false)
+    private String content;
+}

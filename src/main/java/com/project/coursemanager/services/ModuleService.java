@@ -1,10 +1,10 @@
 package com.project.coursemanager.services;
 
-
-
 import com.project.coursemanager.models.Course;
 import com.project.coursemanager.models.Faculty;
+import com.project.coursemanager.models.Module;
 import com.project.coursemanager.repositories.CourseRepository;
+import com.project.coursemanager.repositories.ModuleRepository;
 import com.project.coursemanager.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,25 +12,25 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/course")
-public class CourseService {
+@RequestMapping("/api/module")
+public class ModuleService {
 
     @Autowired
     CourseRepository courseRepository;
     @Autowired
-    UserRepository userRepository;
+    ModuleRepository moduleRepository;
 
     @PostMapping("/")
-    public Course createCourseForUser(@RequestBody Course course, @RequestParam(name="user_id", required=true) Integer userId) {
-        course.setAuthor((Faculty) userRepository.findOne(userId));
-        return courseRepository.save(course);
+    public Module createModuleForCourse(@RequestBody Module module, @RequestParam(name="course_id", required=true) Integer courseId) {
+        module.setCourse(courseRepository.findOne(courseId));
+        return moduleRepository.save(module);
     }
 
-    @PutMapping("/{courseId}")
-    public Course updateCourseName(@PathVariable("courseId") int id,@RequestBody Course course) {
-        Course newCourse=courseRepository.findOne(id);
-        newCourse.setName(course.getName());
-        return courseRepository.save(newCourse);
+    @PutMapping("/{moduleId}")
+    public Module updateModuleName(@PathVariable("moduleId") int id,@RequestBody Module module) {
+        Module newModule=moduleRepository.findOne(id);
+        newModule.setName(module.getName());
+        return moduleRepository.save(newModule);
     }
 
     @GetMapping("/")
@@ -48,6 +48,5 @@ public class CourseService {
     public void deleteCourseById(@PathVariable("courseId") int id) {
         courseRepository.delete(id);
     }
-
 
 }
