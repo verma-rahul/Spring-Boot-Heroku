@@ -34,19 +34,19 @@ public class ModuleService {
     }
 
     @GetMapping("/")
-    public List<Course> getAllCourses(@RequestParam(name="user_id", required=true) Integer userId) {
-        return ((Faculty) userRepository.findOne(userId)).getAuthoredCourses();
+    public List<Module> getAllModules(@RequestParam(name="course_id", required=true) Integer courseId) {
+        return  courseRepository.findOne(courseId).getModules();
 
     }
-    @GetMapping("/{courseId}")
-    public Course getCourseById(@PathVariable("courseId") int id) {
-        return courseRepository.findOne(id);
+    @GetMapping("/{moduleId}")
+    public Module getModuleById(@PathVariable("moduleId") int id) {
+        return moduleRepository.findOne(id);
 
     }
 
-    @DeleteMapping ("/{courseId}")
-    public void deleteCourseById(@PathVariable("courseId") int id) {
-        courseRepository.delete(id);
+    @DeleteMapping ("/{moduleId}")
+    public void deleteModuleById(@PathVariable("moduleId") int id) {
+        moduleRepository.delete(id);
     }
 
 }
