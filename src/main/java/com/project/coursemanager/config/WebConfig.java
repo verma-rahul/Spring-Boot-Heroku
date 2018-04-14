@@ -20,10 +20,10 @@ public class WebConfig extends WebMvcConfigurerAdapter {
      * addCorsMappings: configure the CORS Support for All types of request for the Spring Boot Application
      * @param registry: CorsRegistry object
      */
-    @Override
+/*    @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**").allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD");
-    }
+    }*/
 
 //
 //    @Override
