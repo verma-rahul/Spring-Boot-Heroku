@@ -3,11 +3,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/demo")
+@RequestMapping("api/demo")
 public class Demo {
 
-    @GetMapping("/hello")
+    @GetMapping("/")
     public String findAllUsers() {
-       return "Hello from Demo!";
+       return "Hello from Spring Boot Server!";
     }
 }
