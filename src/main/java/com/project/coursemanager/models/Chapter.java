@@ -36,7 +36,7 @@ public class Chapter {
     private Module module;
 
 
-    @OneToMany(mappedBy = "section", orphanRemoval = true, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "chapter", orphanRemoval = true, cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Widget> widgets;
 
