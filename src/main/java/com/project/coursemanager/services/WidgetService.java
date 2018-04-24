@@ -18,18 +18,18 @@ public class WidgetService {
     WidgetRepository widgetRepository;
 
     @PostMapping("/")
-    public Widget createWidgetForSection(@RequestBody Widget widget, @RequestParam(name="chapter_id", required=true) Integer sectionId) {
+    public Widget createWidgetForChapter(@RequestBody Widget widget, @RequestParam(name="chapter_id", required=true) Integer chapterId) {
 
-        widget.setChapter(chapterRepository.findOne(sectionId));
+        widget.setChapter(chapterRepository.findOne(chapterId));
         return widgetRepository.save(widget);
     }
 
     @GetMapping("/")
-    public Widget[] getAllWidgets(@RequestParam(name="chapter_id", required=true) Integer sectionId) {
+    public Widget[] getAllWidgets(@RequestParam(name="chapter_id", required=true) Integer chapterId) {
 
         //		We Convert Iterable to Array, so that Jackson can find Type and use
         //		the Custom Configuration and add type field
-        return StreamSupport.stream(chapterRepository.findOne(sectionId).
+        return StreamSupport.stream(chapterRepository.findOne(chapterId).
                                                 getWidgets().spliterator(),
                                             false).toArray(Widget[]::new) ;
 

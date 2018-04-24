@@ -46,7 +46,7 @@ public class Module {
     }
     //    To Exclude The Field in Serialization
     @JsonIgnore
-    public void setSections(List<Chapter> chapters) {
+    public void setChapters(List<Chapter> chapters) {
         this.chapters = chapters;
     }
 
