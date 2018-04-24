@@ -38,16 +38,16 @@ public class Module {
 
     @OneToMany(mappedBy = "module", orphanRemoval = true, cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<Section> sections;
+    private List<Chapter> chapters;
     //    To include The Field in Serialization
     @JsonProperty
-    public List<Section> getSections() {
-        return sections;
+    public List<Chapter> getChapters() {
+        return chapters;
     }
     //    To Exclude The Field in Serialization
     @JsonIgnore
-    public void setSections(List<Section> sections) {
-        this.sections = sections;
+    public void setSections(List<Chapter> chapters) {
+        this.chapters = chapters;
     }
 
     public Module(String name) {

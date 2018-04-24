@@ -1,13 +1,11 @@
 package com.project.coursemanager.services;
 
 import com.project.coursemanager.models.*;
-import com.project.coursemanager.repositories.ModuleRepository;
-import com.project.coursemanager.repositories.SectionRepository;
+import com.project.coursemanager.repositories.ChapterRepository;
 import com.project.coursemanager.repositories.WidgetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.stream.StreamSupport;
 
 @RestController
@@ -15,14 +13,14 @@ import java.util.stream.StreamSupport;
 public class WidgetService {
 
     @Autowired
-    SectionRepository sectionRepository;
+    ChapterRepository chapterRepository;
     @Autowired
     WidgetRepository widgetRepository;
 
     @PostMapping("/")
     public Widget createWidgetForSection(@RequestBody Widget widget, @RequestParam(name="section_id", required=true) Integer sectionId) {
 
-        widget.setSection(sectionRepository.findOne(sectionId));
+        widget.setChapter(chapterRepository.findOne(sectionId));
         return widgetRepository.save(widget);
     }
 
@@ -31,7 +29,7 @@ public class WidgetService {
 
         //		We Convert Iterable to Array, so that Jackson can find Type and use
         //		the Custom Configuration and add type field
-        return StreamSupport.stream(sectionRepository.findOne(sectionId).
+        return StreamSupport.stream(chapterRepository.findOne(sectionId).
                                                 getWidgets().spliterator(),
                                             false).toArray(Widget[]::new) ;
 

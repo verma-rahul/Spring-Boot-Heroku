@@ -37,7 +37,7 @@ public abstract class Widget {
 
         @ManyToOne()
         @JsonIgnore
-        private Section section;
+        private Chapter chapter;
 
 
         public int getId() {
@@ -52,13 +52,13 @@ public abstract class Widget {
         public void setName(String name) {
             this.name = name;
         }
-        public Section getSection() {
-            return this.section;
+        public Chapter getChapter() {
+            return this.chapter;
         }
-        public void setSection(Section section) {
-            this.section = section;
-            if(!section.getWidgets().contains(this)) {
-                section.getWidgets().add(this);
+        public void setChapter(Chapter chapter) {
+            this.chapter = chapter;
+            if(!chapter.getWidgets().contains(this)) {
+                chapter.getWidgets().add(this);
             }
         }
         public void set(Widget newWidget){

@@ -14,7 +14,7 @@ import java.util.List;
  * @Entity : Used to Mark as Table for JPA
  * */
 @Entity
-public class Section {
+public class Chapter {
 
     /*   @JsonView : annotation added to fetch
        field by functions marked by same Interface
@@ -52,14 +52,14 @@ public class Section {
     }
 
 
-    public Section(String name) {
+    public Chapter(String name) {
         super();
         this.name = name;
     }
-    public Section() {
+    public Chapter() {
         super();
     }
-    public Section(int id, String name) {
+    public Chapter(int id, String name) {
         super();
         this.id = id;
         this.name = name;
@@ -81,8 +81,8 @@ public class Section {
     }
     public void setModule(Module module) {
         this.module = module;
-        if(!module.getSections().contains(this)) {
-            module.getSections().add(this);
+        if(!module.getChapters().contains(this)) {
+            module.getChapters().add(this);
         }
     }
 }
